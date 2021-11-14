@@ -1,0 +1,16 @@
+version: 2
+
+models:
+    - name: dim_custDiscount
+      description: 'This test confirms that the combination of columns is unique'
+      tests:
+        - dbt_utils.unique_combination_of_columns:
+            combination_of_columns:
+              - FIRST_NAME
+              - LAST_NAME
+      columns:
+          - name: FIRST_NAME
+            tests:
+                - dbt_expectations.expect_column_values_to_be_of_type:
+                      column_type: text
+        

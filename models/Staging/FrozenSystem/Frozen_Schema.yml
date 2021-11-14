@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: stg_customer
+    description: 'Details of customers'
+    columns:
+        - name: CUST_ID
+          tests:
+              - unique
+              - not_null
