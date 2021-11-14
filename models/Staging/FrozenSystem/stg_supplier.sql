@@ -5,7 +5,7 @@ WITH SUPPLIERS AS (
         Supplier_Address ,
         Contact_NUmber ,
         Email_Address  
-    FROM "FROZENSYSTEMDB"."FROZENSYSTEM"."TBLSUPPLIER"
+    FROM {{ source('FROZENSYSTEM', 'TBLSUPPLIER') }}
 )
 
 SELECT * FROM SUPPLIERS

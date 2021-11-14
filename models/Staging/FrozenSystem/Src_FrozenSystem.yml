@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+    - name: FROZENSYSTEM
+      database: FROZENSYSTEMDB
+      tables:
+        - name: TBLCUSTOMERS
+        - name: TBLEMPLOYEE
+        - name: TBLORDER
+        - name: TBLPAYMENTS
+        - name: TBLPRODUCTS
+        - name: TBLSUPPLIER
+        - name: TBLTRANSACTIONS
+    - name: DBT_FROZENSYSTEM
+      database: FROZENSYSTEMDB
+      tables:
+        - name: dim_customer_details
+

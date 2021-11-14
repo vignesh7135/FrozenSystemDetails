@@ -8,7 +8,7 @@ WITH PAYMENTS AS (
         Payment_Method,
         Quantity,
         Price
-    FROM "FROZENSYSTEMDB"."FROZENSYSTEM"."TBLPAYMENTS"
+    FROM {{ source('FROZENSYSTEM', 'TBLPAYMENTS') }}
 )
 
 SELECT * FROM PAYMENTS

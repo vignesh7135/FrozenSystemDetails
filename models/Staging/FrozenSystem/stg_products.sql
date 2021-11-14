@@ -3,12 +3,12 @@ WITH PRODUCTS AS (
         products_Id, 
         product_Name ,
         product_Type ,
-        image text ,
-        description text ,
+        image  ,
+        description  ,
         price ,
         On_hand ,
         quantity
-    FROM "FROZENSYSTEMDB"."FROZENSYSTEM"."TBLPRODUCTS"
+    FROM {{ source('FROZENSYSTEM', 'TBLPRODUCTS') }}
 )
 
 SELECT * FROM PRODUCTS

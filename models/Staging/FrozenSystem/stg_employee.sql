@@ -8,6 +8,6 @@ WITH EMPLOYEE AS (
         Address ,
         Contact_Number ,
         Email_Address 
-    FROM "FROZENSYSTEMDB"."FROZENSYSTEM"."TBLEMPLOYEE"
+    FROM {{ source('FROZENSYSTEM', 'TBLEMPLOYEE') }}
 )
 SELECT * FROM employee

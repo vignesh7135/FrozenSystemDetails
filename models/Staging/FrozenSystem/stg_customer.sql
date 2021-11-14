@@ -8,7 +8,7 @@ with Customers as (
         Age ,
         Phone_number ,
         Zipcode 
-    FROM "FROZENSYSTEMDB"."FROZENSYSTEM"."TBLCUSTOMERS"
+    FROM {{ source('FROZENSYSTEM', 'tblcustomers') }}
 )
 
 SELECT * FROM Customers

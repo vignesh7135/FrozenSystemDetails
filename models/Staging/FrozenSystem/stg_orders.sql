@@ -6,7 +6,7 @@ WITH ORDERS AS (
          Date_Order ,
          quantity ,
          Price
-    FROM "FROZENSYSTEMDB"."FROZENSYSTEM"."TBLORDER"
+    FROM {{ source('FROZENSYSTEM', 'TBLORDER') }}
 )
 SELECT * FROM ORDERS
 

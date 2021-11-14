@@ -5,7 +5,7 @@ WITH TRANSACTIONS AS (
         Order_id ,
         Products_id ,
         Payment_id 
-    FROM "FROZENSYSTEMDB"."FROZENSYSTEM"."TBLTRANSACTIONS"
+    FROM {{ source('FROZENSYSTEM', 'TBLTRANSACTIONS') }}
 )
 
 SELECT * FROM TRANSACTIONS
