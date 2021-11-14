@@ -8,7 +8,7 @@ with Customers as (
         Age ,
         Phone_number ,
         Zipcode 
-    FROM {{ source('FROZENSYSTEM', 'tblcustomers') }}
+    FROM {{ source('FROZENSYSTEM', 'TBLCUSTOMERS') }}
 )
 
 SELECT * FROM Customers
