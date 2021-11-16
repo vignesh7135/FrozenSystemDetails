@@ -8,3 +8,54 @@ models:
           tests:
               - unique
               - not_null
+              
+  - name: stg_employee
+    description: 'Details of Employees'
+    columns:
+        - name: Employee_id
+          tests:
+              - unique
+              - not_null
+  
+  - name: stg_orders
+    description: 'Details of Id'
+    columns:
+        - name: id
+          tests:
+              - unique
+              - not_null
+        
+  - name: stg_payments
+    description: 'Details of Payment'
+    columns:
+        - name: Payment_id
+          tests:
+              - unique
+              - not_null
+              - relationships:
+                    to: ref('stg_orders')
+                    field: Payment_id
+    
+  - name: stg_products
+    description: 'Details of products'
+    columns:
+        - name: products_Id
+          tests:
+              - unique
+              - not_null
+  
+  - name: stg_supplier
+    description: 'Details of suppliers'
+    columns:
+        - name: supplier_Id
+          tests:
+              - unique
+              - not_null
+
+  - name: stg_transactions
+    description: 'Tranaction history'
+    columns:
+        - name: Customer_id
+          tests:
+              - unique
+              - not_null
