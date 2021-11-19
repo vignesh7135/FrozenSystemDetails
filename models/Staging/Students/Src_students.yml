@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+    - name: FROZENSYSTEM
+      database: FROZENSYSTEMDB
+      tables:
+        - name: student_profile
+        - name: student_results

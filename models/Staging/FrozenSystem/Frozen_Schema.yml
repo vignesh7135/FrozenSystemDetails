@@ -4,38 +4,53 @@ models:
   - name: stg_customer
     description: 'Details of customers'
     columns:
-        - name: CUST_ID
+        - name: age
           tests:
-              - unique
               - not_null
-              
+              # used macros to checks for only number in column
+              - only_numbers
+                    
   - name: stg_employee
     description: 'Details of Employees'
     columns:
         - name: Employee_id
+          description: 'Primary Key of the table'
           tests:
               - unique
               - not_null
+              # used macros to checks equal rows in two different columns of two different table #
+              - test_equal_rowcount:
+                 compare_model: ref('TBLTRANSACTIONS')                
+        - name: middle_name
+          tests:
+              # used macros to checks at least one value is present
+              - test_at_least_one
   
   - name: stg_orders
     description: 'Details of Id'
     columns:
         - name: id
+          description: 'Primary Key of the table'
           tests:
               - unique
               - not_null
-        
+              # checks the primary Key and Foreign Key relationship
+              - relationships:
+                  to: ref('stg_transactions')
+                  field: Order_id
+        - name: quantity
+          tests:
+              - not_null
+
   - name: stg_payments
     description: 'Details of Payment'
     columns:
         - name: Payment_id
+          description: 'Primary Key of the table'
           tests:
-              - unique
-              - not_null
-              - relationships:
-                    to: ref('stg_orders')
-                    field: Payment_id
-    
+            - unique
+            - not_null
+               
   - name: stg_products
     description: 'Details of products'
     columns:
@@ -51,7 +66,7 @@ models:
           tests:
               - unique
               - not_null
-
+              
   - name: stg_transactions
     description: 'Tranaction history'
     columns:

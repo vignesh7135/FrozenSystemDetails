@@ -1,6 +1,6 @@
 WITH TRANSACTIONS AS (
     SELECT 
-        Employee_id ,
+        Emp_id ,
         Customer_id ,
         Order_id ,
         Products_id ,
