@@ -1,0 +1,77 @@
+version: 2
+
+models:
+    - name: stg_customer
+      description: 'Details of customers'
+      
+      columns:
+          - name: age
+            tests:
+                - not_null
+              # used macros to checks for only number in column
+                - only_numbers
+                    
+    - name: stg_employee
+      description: 'Details of Employees'
+      columns:
+          - name: Employee_id
+            description: 'Primary Key of the table'
+            tests:
+                - unique
+                - not_null
+                # used macros to checks equal rows in two different columns of two different table #
+                - test_equal_rowcount:
+                   compare_model: ref('TBLTRANSACTIONS')                
+          - name: middle_name
+            tests:
+                # used macros to checks at least one value is present
+                - test_at_least_one
+    
+    - name: stg_orders
+      description: 'Details of Id'
+      columns:
+          - name: id
+            description: 'Primary Key of the table'
+            tests:
+                - unique
+                - not_null
+                # checks the primary Key and Foreign Key relationship
+                - relationships:
+                    to: ref('stg_transactions')
+                    field: Order_id
+          - name: quantity
+            tests:
+                - not_null
+  
+    - name: stg_payments
+      description: 'Details of Payment'
+      columns:
+          - name: Payment_id
+            description: 'Primary Key of the table'
+            tests:
+              - unique
+              - not_null
+                 
+    - name: stg_products
+      description: 'Details of products'
+      columns:
+          - name: products_Id
+            tests:
+                - unique
+                - not_null
+    
+    - name: stg_supplier
+      description: 'Details of suppliers'
+      columns:
+          - name: supplier_Id
+            tests:
+                - unique
+                - not_null
+                
+    - name: stg_transactions
+      description: 'Tranaction history'
+      columns:
+          - name: Customer_id
+            tests:
+                - unique
+                - not_null

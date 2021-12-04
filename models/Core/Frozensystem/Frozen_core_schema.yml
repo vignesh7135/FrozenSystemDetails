@@ -1,0 +1,11 @@
+version: 2
+
+models:
+    - name: stg_customer
+      description: 'Details of customers'
+      columns:
+          - name: age
+            tests:
+                - not_null
+              # used macros to checks for only number in column
+                - only_numbers

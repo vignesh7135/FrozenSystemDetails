@@ -6,10 +6,13 @@
 }}
 WITH CUSTOMER_DETAILS AS (
     SELECT  A.Employee_id,
-            A.First_name,A.middle_name, A.last_name,
+            A.First_name,
+            A.middle_name,
+            A.last_name,
             A.contact_number,
-            B.customer_id,SPLIT_PART(B.order_id, '_', 3) AS ORDER_ID,
-            SPLIT_PART(C.order_number,'O',2),
+            B.customer_id,
+            {{ drop_id_field ('B.order_id') }} AS ORDER_ID,
+            SPLIT_PART(C.order_number,'O',2) AS ORDER_NUMBER,
             C.date_order,C.quantity,C.price,
             CONCAT(D.FIRST_NAME, ' ', D.LAST_NAME) AS CUST_NAME, 
             D.phone_number
