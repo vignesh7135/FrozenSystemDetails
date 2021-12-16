@@ -11,8 +11,3 @@ sources:
         - name: TBLPRODUCTS
         - name: TBLSUPPLIER
         - name: TBLTRANSACTIONS
-    - name: DBT_FROZENSYSTEM
-      database: FROZENSYSTEMDB
-      tables:
-        - name: dim_customer_details
-
