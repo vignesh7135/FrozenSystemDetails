@@ -1,11 +1,60 @@
 version: 2
 
 models:
-    - name: stg_customer
+    - name: Hotel_Customers
+      tests:
+      - dbt_utils.unique_combination_of_columns:
+            combination_of_columns:
+              - employee_name
+              - employee_number
+              - mobile_no
+              - cust_id
+              - order_id
+              - order_date
+              - quantity  
       description: 'Details of customers'
       columns:
-          - name: age
+          - name: employee_name
             tests:
                 - not_null
-              # used macros to checks for only number in column
+          - name: employee_number   
+            tests:
+                - not_null
+                - unique
+          - name: mobile_no
+            tests:
+                - not_null
+                - unique
+          - name: cust_id
+            tests:
+                - not_null
+                - unique
+          - name: order_id
+            tests:
+                - not_null
+                - unique
+          - name: order_date
+            tests:
+                - not_null
+                - unique
+          - name: quantity
+            tests:
+                - not_null
                 - only_numbers
+          - name: price
+            tests:
+                - not_null
+                - only_numbers
+          - name: food_cancelled
+            tests:
+                - not_null
+                - test_at_least_one
+          - name: food_delayed
+            tests:
+                - not_null
+                - test_at_least_one
+          - name: food_arrived
+            tests:
+                - not_null
+                - test_at_least_one
+    

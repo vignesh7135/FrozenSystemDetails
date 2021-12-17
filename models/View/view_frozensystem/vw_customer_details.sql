@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized='view',
+        store_failures = true,
+        tags=["customer_data"]
+    )
+}}
 WITH CUSTOMER_DETAILS AS (
     SELECT  A.Employee_id,
             A.First_name,
@@ -27,7 +34,7 @@ SELECT
     EMP_NUMBER AS EMPLOYEE_NUMBER,
     contact_number AS MOBILE_NO,
     CUSTOMER_ID AS CUST_ID,
-    ORDER_ID AS ORDER_ID,Ś
+    ORDER_ID AS ORDER_ID,
     DATE_ORDER AS ORDER_DATE,
     QUANTITY AS QUANTITY,
     PRICE AS PRICE,
@@ -46,5 +53,5 @@ SELECT
     ('DBT_'|| TO_CHAR(SYSDATE(), 'YYYY_MM_DD_HH24_MI_SS')||'P1') AS BATCH_ID,
     SYSDATE() AS INSERT_DATE,
     'Vignesh_dbt_prod_909785' AS ETL_USER_ID
-FROM CUSTOMER_DETAILSŚ
+FROM CUSTOMER_DETAILS
 GROUP BY 1,2,3,4,5,6,7,8,9,10,11
