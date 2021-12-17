@@ -1,7 +1,8 @@
 {{
     config(
         materialized='table',
-        store_failures = true
+        store_failures = true,
+        tags=["customer_data"]
     )
 }}
 WITH EMPLOYEE AS (

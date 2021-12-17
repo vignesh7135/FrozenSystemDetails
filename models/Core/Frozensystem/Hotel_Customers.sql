@@ -1,7 +1,8 @@
 {{
     config(
         schema= 'dbt_forzensystem',
-        materialized='table'
+        materialized='table',
+        tags=["customer_data"]
     )
 }}
 SELECT 
@@ -18,6 +19,6 @@ SELECT
     food_arrived,
     food_delayed,
     food_cancelled
-FROM {{ ref('intm_customer_velocity') }}
+FROM {{ ref('vw_customer_velocity') }}
 WHERE QUANTITY > 3 AND ORDER_DATE BETWEEN '1970-02-28' AND CURRENT_DATE - 1
 HAVING PRICE > 1000

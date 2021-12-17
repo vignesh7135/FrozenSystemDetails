@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized='view',
+        store_failures = true,
+        tags=["customer_data"]
+    )
+}}
 SELECT
     A.*
     FROM
