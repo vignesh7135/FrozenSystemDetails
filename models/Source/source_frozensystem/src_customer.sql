@@ -1,3 +1,9 @@
+{{
+    config(
+        materialized='table',
+        store_failures = true
+    )
+}}
 with Customers as (
     SELECT
         Customer_id AS CUST_ID,

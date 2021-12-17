@@ -1,3 +1,9 @@
+{{
+    config(
+        materialized='table',
+        store_failures = true
+    )
+}}
 WITH PAYMENTS AS (
     SELECT
         Payment_id ,

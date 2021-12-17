@@ -1,3 +1,9 @@
+{{
+    config(
+        materialized='table',
+        store_failures = true
+    )
+}}
 WITH ORDERS AS (
     SELECT 
          id ,

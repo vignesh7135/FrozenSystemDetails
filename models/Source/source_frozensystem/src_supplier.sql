@@ -1,3 +1,9 @@
+{{
+    config(
+        materialized='table',
+        store_failures = true
+    )
+}}
 WITH SUPPLIERS AS (
     SELECT 
         Supplier_id ,

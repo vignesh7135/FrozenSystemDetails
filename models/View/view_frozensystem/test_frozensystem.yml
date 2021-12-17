@@ -1,0 +1,75 @@
+version: 2
+models:
+  - name: vw_customer_details
+    description: 'Details of customers'
+    columns:
+      - name: EMPLOYEE_NAME
+        tests:
+          - not_null
+      - name: MOBILE_NO
+        test:
+          - not_null
+          - unique
+      - name: ORDER_ID
+        test:
+          - not_null
+          - unique
+          - only_numbers
+      - name: QUANTITY
+        test:
+          - not_null
+          - only_numbers
+      - name: ORDER_NUMBER
+        test:
+          - not_null
+          - unique
+          - only_numbers
+  - name: vw_customer_velocity
+    description: 'Details of Employees'
+    columns:
+      - name: EMPLOYEE_NAME
+        description: 'Primary Key of the table'
+        tests:
+          - unique
+          - not_null
+          - test_equal_rowcount:
+              compare_model: ref('TBLTRANSACTIONS')
+      - name: FOOD_ARRIVED
+        test:
+          - not_null
+          - unique
+          - only_numbers
+          - test_at_least_one
+      - name: FOOD_DELAYED
+        test:
+          - not_null
+          - unique
+          - only_numbers
+          - test_at_least_one
+      - name: FOOD_CANCELLED
+        test:
+          - not_null
+          - unique
+          - only_numbers
+          - test_at_least_one
+  - name: vw_customer_growth
+    description: 'Details of Customer who purchased more quantity of foods'
+    columns:
+      - name: EMPLOYEE_NUMBER
+        description: 'Name of employees'
+        tests:
+          - unique
+          - not_null
+      - name: quantity
+        tests:
+          - not_null
+      - name: MOBILE_NO
+        description: 'Name of employees'
+        tests:
+          - unique
+          - not_null
+      - name: CUST_ID
+        description: 'Name of employees'
+        tests:
+          - unique
+          - not_null
