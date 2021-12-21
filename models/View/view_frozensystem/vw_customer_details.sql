@@ -1,9 +1,9 @@
 {{
-    config(
-        materialized='view',
-        store_failures = true,
-        tags=["customer_data"]
-    )
+    config({
+       "materialized": 'view',
+        "store_failures" : 'true',
+        'tags': "customer_data"
+    })
 }}
 WITH CUSTOMER_DETAILS AS (
     SELECT  A.Employee_id,

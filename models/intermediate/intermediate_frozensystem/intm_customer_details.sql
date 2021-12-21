@@ -1,3 +1,9 @@
+{{
+  config({
+    'tags': "customer_data"
+  })
+}}
+
 WITH CUSTOMER_DETAILS AS (
     SELECT  A.Employee_id,
             A.First_name,

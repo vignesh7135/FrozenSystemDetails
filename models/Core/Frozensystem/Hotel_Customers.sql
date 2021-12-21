@@ -1,9 +1,8 @@
 {{
-    config(
-        schema= 'dbt_forzensystem',
-        materialized='table',
-        tags=["customer_data"]
-    )
+    config({
+        'schema': 'dbt_frozensystem',
+         "materialized": 'table'
+    })
 }}
 SELECT 
     employee_name,
