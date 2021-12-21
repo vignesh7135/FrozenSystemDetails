@@ -1,3 +1,8 @@
+{{
+  config({
+    'tags': "customer_data"
+  })
+}}
 WITH DISCOUNTS AS (
     SELECT
         A.*
